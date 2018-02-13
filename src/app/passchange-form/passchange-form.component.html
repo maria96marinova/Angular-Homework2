@@ -1,0 +1,83 @@
+<div class="main-form">
+  <form [formGroup]="passchangeForm" (ngSubmit)="submitForm()">
+
+    <div class="row">
+          <div class="form-group">
+    <label for="current">Current Password</label>
+    <input type="text" class="form-control" id="current" formControlName="currentPassword">
+    <div *ngIf="currentPassword.touched && currentPassword.errors" class="alert alert-danger">
+
+      <div *ngIf="currentPassword.errors.required">
+        The current password field is required.
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <div class="row">
+      <div class="form-group">
+    <label for="new">New Password</label>
+      <input type="text" class="form-control col-xs-10" id="new" formControlName="newPassword">
+      <div *ngIf="newPassword.touched && newPassword.errors"  class="alert alert-danger">
+  
+        <div *ngIf="newPassword.errors.required">
+          The new password field is required.
+  
+        </div>
+
+        <div *ngIf="newPassword.errors.minlength">
+            The new password field must be at least 8 characters long.
+    
+          </div>
+
+          <div *ngIf="newPassword.errors.pattern">
+              The new password field must contain at least one uppercase letter,
+              one lower case letter and one digit.
+      
+            </div>
+
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="form-group">
+      <label for="confirm">Confirm Password</label>
+      <input type="text" formControlName="confirmPassword" id="confirm" class="form-control"/>
+      <div *ngIf="confirmPassword.touched && confirmPassword.errors"  class="alert alert-danger">
+
+        <div *ngIf="confirmPassword.errors.required">
+          The confirm password field is required.
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+    <div *ngIf="changeForm.errors" class="alert alert-danger">
+    <div *ngIf="passchangeForm.errors.noMatch">
+
+        The two passwords do not match.
+
+    </div>
+
+    <div *ngIf="passchangeForm.errors.invalid">
+
+
+      The old password is not correct.
+
+    </div>
+
+    </div>
+
+    <input type="submit" [disabled]="!passchangeForm.valid" class="btn btn-success">
+  </form>
+
+</div>
+
+

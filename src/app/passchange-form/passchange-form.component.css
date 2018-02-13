@@ -1,0 +1,10 @@
+.main-form{
+    display: inline-block;
+    
+    
+
+}
+
+input.ng-touched.ng-invalid{
+    border-left: 5px solid #a94442; 
+}
