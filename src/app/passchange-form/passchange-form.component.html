@@ -32,7 +32,7 @@
     
           </div>
 
-          <div *ngIf="newPassword.errors.pattern">
+          <div *ngIf="newPassword.errors.pattern && !newPassword.errors.minlength">
               The new password field must contain at least one uppercase letter,
               one lower case letter and one digit.
       
